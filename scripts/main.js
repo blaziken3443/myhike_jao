@@ -23,3 +23,12 @@ function getNameFromAuth() {
     });
 }
 getNameFromAuth(); //run the function
+
+function readQuote(day) {
+    db.collection("quotes").doc(day).onSnapshot(dayDocument => {
+        quoteOfDay = dayDocument.data().quote;
+        document.getElementById("quote-goes-here").innerHTML = quoteOfDay;
+    })
+}
+
+readQuote("tuesday")
